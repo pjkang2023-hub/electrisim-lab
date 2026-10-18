@@ -1,0 +1,21 @@
+{
+ "substation": "p1rhs0_1247",
+ "mv_buses": 632,
+ "lines": 510,
+ "mv_transformers": 1,
+ "lumped_transformers": 357,
+ "loads_mw": 8.2078,
+ "opendss_source_p_mw": 8.4423,
+ "opendss_source_q_mvar": 2.3641,
+ "pandapower_source_p_mw": 8.4368,
+ "pandapower_source_q_mvar": 2.3222,
+ "v_diff_pu_max": 0.0097,
+ "v_diff_pu_mean": 0.00197,
+ "v_min_pu": {
+  "opendss": 0.975,
+  "pandapower": 0.9797
+ },
+ "substation_transformer_loading_pct": [
+  54.7
+ ]
+}

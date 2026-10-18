@@ -16,12 +16,23 @@ as a phase of its own.
   API on 127.0.0.1:5000. It starts no server of its own.
 - Downloads (datasets, solver binaries) go in `data/`, which git ignores.
 
+## Setup
+
+```
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements.txt
+```
+
+Ipopt (the NLP solver) is not on PyPI: COIN-OR's Windows build,
+`Ipopt-3.14.20-win64-msvs2022-md.zip` from github.com/coin-or/Ipopt/releases,
+unzipped into `data/ipopt/`. `check_solvers.py` checks HiGHS and Ipopt from Pyomo.
+
 ## Experiments
 
 | Folder | Question | Tools | Status |
 |---|---|---|---|
-| `01_pyomo_acdc_opf` | An AC/DC optimal power flow on the PCS3750C-MV reference: each inverter's S circle, the batteries on its DC buses, the 0.6 S reactive cap; and the least load to shed when no dispatch exists (Block 3 out) | Pyomo, Ipopt, HiGHS | not started |
-| `02_smartds_site_screening` | Where can a 5-10 MW data center connect on a realistic utility feeder? One SMART-DS feeder through Electrisim's site and DG interconnection screening | SMART-DS (OpenDSS), Electrisim | not started |
+| `01_pyomo_acdc_opf` | An AC/DC optimal power flow on the PCS3750C-MV reference: each inverter's S circle, the batteries on its DC buses, the 0.6 S reactive cap; and the least load to shed when no dispatch exists (Block 3 out) | Pyomo, Ipopt, HiGHS | done 18 Oct: see its README |
+| `02_smartds_site_screening` | Where can a 5-10 MW data center connect on a realistic utility feeder? One SMART-DS feeder through Electrisim's site and DG interconnection screening | SMART-DS (OpenDSS), Electrisim | done 18 Oct: see its README |
 | `03_pypsa_sizing` | The 800 VDC factory's substation storage and turbine sized over 8,760 h of the DGX training profile against a tariff | PyPSA, HiGHS | not started |
 | `04_omlt_surrogate` | A surrogate of the factory island's lowest 800 V from an EMT sweep, and the smallest store rating that keeps it above 0.9 pu | OMLT, Pyomo, PyTorch or ONNX | not started |
 

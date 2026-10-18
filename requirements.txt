@@ -1,0 +1,5 @@
+# The lab's Python packages (into .venv, never electrisim's)
+pyomo==6.10.1
+highspy==1.15.1
+numpy==2.4.6
+pandas==3.0.6

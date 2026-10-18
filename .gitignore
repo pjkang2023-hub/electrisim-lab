@@ -8,3 +8,9 @@ __pycache__/
 /data/
 *.parquet
 *.zip
+
+# Captured Electrisim networks (regenerate with capture_net.py)
+*.pkl
+
+# Full screening output with every snapshot (14 MB; regenerate with screen_sites.py)
+*.screening.json

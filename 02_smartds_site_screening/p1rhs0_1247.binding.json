@@ -1,0 +1,93 @@
+{
+ "Substation 12.47 kV bus": {
+  "headroom_mw": 6.59,
+  "bus": "sb8_p1rhs0_1247_node_8_4",
+  "violations_just_past": 1,
+  "first_of_each_kind": {
+   "Transformer": [
+    "102.4% loaded",
+    "sb8_p1rhs0_1247_trans_2"
+   ]
+  },
+  "substation_transformer_pct": 102.4,
+  "v_min_pu": 0.9635
+ },
+ "Feeder 1 head": {
+  "headroom_mw": 6.58,
+  "bus": "p1rdt5663-p1rhs0_1247x",
+  "violations_just_past": 1,
+  "first_of_each_kind": {
+   "Transformer": [
+    "102.3% loaded",
+    "sb8_p1rhs0_1247_trans_2"
+   ]
+  },
+  "substation_transformer_pct": 102.3,
+  "v_min_pu": 0.9634
+ },
+ "Feeder 1 middle": {
+  "headroom_mw": 2.02,
+  "bus": "p1rdt6729",
+  "violations_just_past": 3,
+  "first_of_each_kind": {
+   "Bus": [
+    "0.947 pu",
+    "p1rdt4086"
+   ]
+  },
+  "substation_transformer_pct": 70.6,
+  "v_min_pu": 0.9467
+ },
+ "Feeder 1 far end": {
+  "headroom_mw": 0.86,
+  "bus": "p1rdt311",
+  "violations_just_past": 1,
+  "first_of_each_kind": {
+   "Bus": [
+    "0.947 pu",
+    "p1rdt311"
+   ]
+  },
+  "substation_transformer_pct": 61.6,
+  "v_min_pu": 0.947
+ },
+ "Feeder 2 head": {
+  "headroom_mw": 4.23,
+  "bus": "p1rdt6854-p1rhs0_1247x",
+  "violations_just_past": 1,
+  "first_of_each_kind": {
+   "Line": [
+    "102.3% loaded",
+    "sb8_p1rhs0_1247_96"
+   ]
+  },
+  "substation_transformer_pct": 85.2,
+  "v_min_pu": 0.9693
+ },
+ "Feeder 2 middle": {
+  "headroom_mw": 0.96,
+  "bus": "p1rdt2758-p1rdt3242x",
+  "violations_just_past": 3,
+  "first_of_each_kind": {
+   "Line": [
+    "101.0% loaded",
+    "l(r:p1rdt6854-p1rhs0_1247)"
+   ]
+  },
+  "substation_transformer_pct": 62.3,
+  "v_min_pu": 0.9569
+ },
+ "Feeder 2 far end": {
+  "headroom_mw": 0.59,
+  "bus": "p1rdt1174",
+  "violations_just_past": 1,
+  "first_of_each_kind": {
+   "Bus": [
+    "0.946 pu",
+    "p1rdt1174"
+   ]
+  },
+  "substation_transformer_pct": 59.4,
+  "v_min_pu": 0.9463
+ }
+}
