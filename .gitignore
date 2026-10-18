@@ -1,0 +1,10 @@
+# Python environment and caches
+/.venv/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Downloads (SMART-DS feeders, solver binaries) and large outputs
+/data/
+*.parquet
+*.zip
