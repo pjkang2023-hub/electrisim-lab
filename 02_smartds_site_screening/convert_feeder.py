@@ -143,4 +143,13 @@ cmp = {
 pp.to_json(net, os.path.join(HERE, f'{NAME}.pp.json'))
 with open(os.path.join(HERE, f'{NAME}.compare.json'), 'w', encoding='utf-8') as fh:
     json.dump(cmp, fh, indent=1)
+# For a map: each MV bus's coordinates (longitude, latitude) and voltage, and each line's ends.
+name_of = {i: b for b, i in bidx.items()}
+geo = {'buses': [{'bus': b, 'x': xy[b][0], 'y': xy[b][1], 'vm_pu': round(float(net.res_bus.at[i, 'vm_pu']), 4)}
+                 for b, i in bidx.items()],
+       'lines': [[name_of[int(f)], name_of[int(t)]] for f, t in zip(net.line.from_bus, net.line.to_bus)]
+                + [[name_of[int(s.bus)], name_of[int(s.element)]] for s in net.switch.itertuples() if s.et == 'b'],
+       'substation_bus': name_of[int(net.trafo.lv_bus.iloc[0])]}
+with open(os.path.join(HERE, f'{NAME}.geo.json'), 'w', encoding='utf-8') as fh:
+    json.dump(geo, fh)
 print(json.dumps(cmp, indent=1))

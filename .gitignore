@@ -14,3 +14,6 @@ __pycache__/
 
 # Full screening output with every snapshot (14 MB; regenerate with screen_sites.py)
 *.screening.json
+
+# Run logs
+*.log

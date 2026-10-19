@@ -1,0 +1,13 @@
+[server]
+address = "127.0.0.1"     # this machine only
+port = 8502               # Electrisim keeps 5000 (backend) and 5501 (frontend)
+headless = true
+
+[client]
+toolbarMode = "minimal"   # no Deploy button: nothing here is published
+
+[browser]
+gatherUsageStats = false  # no usage statistics sent to Streamlit
+
+[theme]
+base = "light"

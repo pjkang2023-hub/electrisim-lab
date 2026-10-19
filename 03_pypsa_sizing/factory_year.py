@@ -96,11 +96,27 @@ def extra(c, load):
 
 
 def run(label, **over):
+    return run_network(label, **over)[0]
+
+
+def run_network(label, **over):
+    """The case's summary, its solved network and its hourly series (None when not solved)."""
     c = {**CASE_DEFAULTS, **over}
     n, load = build(c)
     status, cond = n.optimize(solver_name='highs', extra_functionality=extra(c, load), log_to_console=False)
     if status != 'ok':
-        return {'case': label, 'status': f'{status}/{cond}'}
+        return {'case': label, 'status': f'{status}/{cond}'}, None, None
+    g = n.generators_t.p
+    series = pd.DataFrame({'load': load, 'utility': g['utility'], 'gas turbine': g['gas turbine'],
+                           'price': tariff(c)}, index=HOURS)
+    if c['battery']:
+        series['battery discharge'] = n.links_t.p1['battery discharger'].mul(-1).values
+        series['battery charge'] = n.links_t.p0['battery charger'].values
+        series['battery energy'] = n.stores_t.e['battery energy'].values
+    return _summary(label, c, n, load), n, series
+
+
+def _summary(label, c, n, load):
     g = n.generators_t.p
     price = tariff(c)
     grid_mwh = float(g['utility'].sum())

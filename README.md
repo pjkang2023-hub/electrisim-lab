@@ -27,6 +27,15 @@ Ipopt (the NLP solver) is not on PyPI: COIN-OR's Windows build,
 `Ipopt-3.14.20-win64-msvs2022-md.zip` from github.com/coin-or/Ipopt/releases,
 unzipped into `data/ipopt/`. `check_solvers.py` checks HiGHS and Ipopt from Pyomo.
 
+## Dashboard
+
+Every experiment from one web page: double-click `start-dashboard.cmd` (or run
+`.venv\Scripts\streamlit.exe run dashboard\app.py`), then open http://127.0.0.1:8502.
+One page per experiment - set its inputs, run it, see its tables and charts. It listens on this
+machine only, sends no usage statistics, and has no Deploy button (`.streamlit/config.toml`);
+Electrisim's ports 5000 and 5501 are left alone. Pages 2 and 4 run Electrisim's studies with
+Electrisim's own Python, read-only, as the scripts do.
+
 ## Experiments
 
 | Folder | Question | Tools | Status |
