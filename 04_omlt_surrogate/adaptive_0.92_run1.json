@@ -1,0 +1,115 @@
+[
+ {
+  "round": 1,
+  "samples": 106,
+  "optimum": {
+   "lineup_store_mw": 4.304,
+   "hallb_store_mw": 5.111,
+   "floor_pu": 0.658,
+   "surrogate_v800_pu": [
+    0.92,
+    0.92,
+    0.92
+   ],
+   "total_store_mw": 23.134
+  },
+  "emt": {
+   "lineup_store_mw": 4.304,
+   "hallb_store_mw": 5.111,
+   "floor_pu": 0.658,
+   "error": false,
+   "v800_min_pu": 0.7972,
+   "v800_min_bus": "Shelf B1 800 V",
+   "racks_lost": 1,
+   "blocked": [
+    "Catcher B rectifier 1",
+    "Catcher B rectifier 2",
+    "Catcher B rectifier 3",
+    "Catcher B rectifier 4",
+    "DC bus coupler A-B",
+    "Hall B SST 1 DC/DC",
+    "Hall B SST 1 rectifier",
+    "Hall B SST 2 DC/DC",
+    "Hall B SST 2 rectifier",
+    "Hall B SST 3 DC/DC",
+    "Hall B SST 3 rectifier",
+    "Lineup B rectifier 1",
+    "Lineup B rectifier 2",
+    "Lineup B rectifier 3",
+    "Lineup B rectifier 4",
+    "Rack A1 50/12 V converters",
+    "Rack A1 power supply 800/50 V"
+   ],
+   "seconds": 52.5
+  },
+  "confirmed": false
+ },
+ {
+  "round": 2,
+  "samples": 107,
+  "optimum": {
+   "lineup_store_mw": 4.716,
+   "hallb_store_mw": 4.426,
+   "floor_pu": 0.921,
+   "surrogate_v800_pu": [
+    0.9242,
+    0.92,
+    0.92
+   ],
+   "total_store_mw": 23.0
+  },
+  "emt": {
+   "lineup_store_mw": 4.716,
+   "hallb_store_mw": 4.426,
+   "floor_pu": 0.921,
+   "error": false,
+   "v800_min_pu": 0.9155,
+   "v800_min_bus": "Shelf A1 800 V",
+   "racks_lost": 0,
+   "blocked": [
+    "Hall B SST 1 DC/DC",
+    "Hall B SST 1 rectifier",
+    "Hall B SST 2 DC/DC",
+    "Hall B SST 2 rectifier",
+    "Hall B SST 3 DC/DC",
+    "Hall B SST 3 rectifier"
+   ],
+   "seconds": 55.0
+  },
+  "confirmed": false
+ },
+ {
+  "round": 3,
+  "samples": 108,
+  "optimum": {
+   "lineup_store_mw": 5.696,
+   "hallb_store_mw": 4.621,
+   "floor_pu": 1.0,
+   "surrogate_v800_pu": [
+    0.92,
+    1.1087,
+    0.92
+   ],
+   "total_store_mw": 26.33
+  },
+  "emt": {
+   "lineup_store_mw": 5.696,
+   "hallb_store_mw": 4.621,
+   "floor_pu": 1.0,
+   "error": false,
+   "v800_min_pu": 0.9354,
+   "v800_min_bus": "Shelf B1 800 V",
+   "racks_lost": 0,
+   "blocked": [
+    "Hall B SST 1 DC/DC",
+    "Hall B SST 1 rectifier",
+    "Hall B SST 2 DC/DC",
+    "Hall B SST 2 rectifier",
+    "Hall B SST 3 DC/DC",
+    "Hall B SST 3 rectifier"
+   ],
+   "seconds": 50.7
+  },
+  "confirmed": true
+ }
+]

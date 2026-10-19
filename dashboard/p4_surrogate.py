@@ -11,7 +11,8 @@ import streamlit as st
 
 from common import ELECTRISIM_PY, EXP, LAB_PY, read_jsonl, run_script
 
-import surrogate as S   # 04_omlt_surrogate
+import adaptive as A    # 04_omlt_surrogate
+import surrogate as S
 
 FOLDER = EXP['surrogate']
 SAMPLES = os.path.join(FOLDER, 'samples.jsonl')
@@ -79,21 +80,34 @@ st.plotly_chart(fig, width='stretch')
 
 # --- The optimum -------------------------------------------------------------------------------
 st.subheader('Least converter rating')
+st.warning('The outcome is a cliff (converters block or not), so a surrogate\'s optimum is a proposal, not an answer: '
+           'one network alone proposed a design that lost ten racks in EMT. Check every proposal in EMT, or let '
+           '"Verify and refit" do it round by round.')
 v_limit = st.slider('The 800 V must stay at or above (pu)', 0.80, 0.98, 0.92, 0.01)
-if st.button('Optimise (OMLT, HiGHS)', type='primary'):
-    with st.spinner('Solving the network as a MILP…'):
-        st.session_state['opt'] = S.optimise(mlp, v_limit)
+ensemble = st.slider('Networks that must all agree (ensemble)', 1, 5, 3)
+a, b = st.columns(2)
+if a.button('Propose a design (OMLT, HiGHS)', type='primary'):
+    with st.spinner('Solving the networks as one MILP…'):
+        nets = [S.fit(x, y, seed=s) for s in range(ensemble)]
+        st.session_state['opt'] = A.optimise_ensemble(nets, v_limit)
         st.session_state.pop('check', None)
+rounds = b.number_input('Verify and refit: rounds at most', 1, 10, 5)
+if b.button('Verify and refit (about 1.5 min a round)', disabled=running):
+    with st.spinner('Propose, run EMT, learn - round by round…'):
+        ok, out, err = run_script(LAB_PY, 'adaptive.py', [v_limit, rounds, ensemble], FOLDER, timeout=7200)
+    st.session_state['adaptive'] = [l for l in out.splitlines() if l.startswith('round')] if ok else [err[-800:]]
+if st.session_state.get('adaptive'):
+    st.code('\n'.join(st.session_state['adaptive']))
 best = st.session_state.get('opt')
 if best is None and 'opt' in st.session_state:
-    st.error('No design within the bounds keeps the 800 V there, by the surrogate.')
+    st.error('No design within the bounds keeps the 800 V there, by every network.')
 elif best:
     k = st.columns(4)
     k[0].metric('Lineup stores', f"{best['lineup_store_mw']:.2f} MW each")
     k[1].metric('Hall B stores', f"{best['hallb_store_mw']:.2f} MW each")
     k[2].metric('Easing floor', f"{best['floor_pu']:.2f}")
-    k[3].metric('Total (3 + 2 converters)', f"{best['total_store_mw']:.2f} MW", f"surrogate {best['surrogate_v800_pu']:.3f} pu",
-                delta_color='off')
+    k[3].metric('Total (3 + 2 converters)', f"{best['total_store_mw']:.2f} MW",
+                'networks: ' + ', '.join(f'{v:.3f}' for v in best['surrogate_v800_pu']) + ' pu', delta_color='off')
     if st.button('Check it with a real EMT run (about 80 s)'):
         with st.spinner('Running EMT…'):
             ok, out, err = run_script(ELECTRISIM_PY, 'emt_sample.py',

@@ -1,0 +1,37 @@
+{
+ "samples": 105,
+ "holding": 15,
+ "v_limit_pu": 0.92,
+ "cv_mae_pu": 0.1321,
+ "cv_p90_pu": 0.4972,
+ "cv_max_pu": 0.8083,
+ "cv_pass_fail_agreement": 0.895,
+ "optimum": {
+  "lineup_store_mw": 4.723,
+  "hallb_store_mw": 4.245,
+  "floor_pu": 1.0,
+  "surrogate_v800_pu": 0.92,
+  "total_store_mw": 22.657
+ },
+ "emt_check": {
+  "lineup_store_mw": 4.723,
+  "hallb_store_mw": 4.245,
+  "floor_pu": 1.0,
+  "error": false,
+  "v800_min_pu": -0.0012,
+  "v800_min_bus": "Hall B 800 V",
+  "racks_lost": 10,
+  "blocked": [
+   "Hall B DC Store 1 converter",
+   "Hall B DC Store 2 converter",
+   "Hall B SST 1 DC/DC",
+   "Hall B SST 1 rectifier",
+   "Hall B SST 2 DC/DC",
+   "Hall B SST 2 rectifier",
+   "Hall B SST 3 DC/DC",
+   "Hall B SST 3 rectifier",
+   "Hall B supercapacitors converter"
+  ],
+  "seconds": 54.9
+ }
+}

@@ -1,0 +1,31 @@
+[
+ {
+  "round": 1,
+  "samples": 109,
+  "optimum": {
+   "lineup_store_mw": 3.766,
+   "hallb_store_mw": 4.362,
+   "floor_pu": 0.1,
+   "surrogate_v800_pu": [
+    0.9844,
+    0.92,
+    1.0225
+   ],
+   "total_store_mw": 20.022
+  },
+  "emt": {
+   "lineup_store_mw": 3.766,
+   "hallb_store_mw": 4.362,
+   "floor_pu": 0.1,
+   "error": false,
+   "v800_min_pu": 0.9439,
+   "v800_min_bus": "Shelf B1 800 V",
+   "racks_lost": 0,
+   "blocked": [
+    "eSTATCOM"
+   ],
+   "seconds": 58.4
+  },
+  "confirmed": true
+ }
+]
